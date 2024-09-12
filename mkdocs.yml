@@ -1,5 +1,5 @@
 site_name: lean-ai-detector
-site_url: https://example.com
+site_url: https://norsulabs.github.io/lean-ai-detector/
 nav: 
     - Home: index.md
     - About: about.md
