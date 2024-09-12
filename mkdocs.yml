@@ -1,0 +1,12 @@
+site_name: lean-ai-detector
+site_url: https://lean-ai-detector.github.io
+nav: 
+    - Home: index.md
+    - About: about.md
+    - Contact: contact.md
+    - GitHub: https://github.com/norsulabs/lean-ai-detector/
+
+theme: material
+
+plugins: 
+    - mkdocstrings
