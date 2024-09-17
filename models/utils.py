@@ -10,3 +10,8 @@ def clean_paragraph(paragraph):
     paragraph = paragraph.strip()
 
     return paragraph
+
+
+def clean(examples):
+    examples["text"] = clean_paragraph(examples["text"])
+    return examples
