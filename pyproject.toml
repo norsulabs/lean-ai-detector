@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "lean-ai-detector"
+version = "0.1.0"
+description = "Lean AI detection suite."
+authors = ["ameen-91 <mohammedameen9011@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+transformers = "^4.44.2"
+torch = "^2.4.1"
+peft = "^0.12.0"
+pandas = "^2.2.2"
+evaluate = "^0.4.3"
+
+
+[tool.poetry.group.dev.dependencies]
+mkdocstrings = {extras = ["python"], version = "^0.26.1"}
+mkdocs-material = "^9.5.34"
+ruff = "^0.6.5"
+mkdocs = {extras = ["python"], version = "^1.6.1"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
