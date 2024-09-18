@@ -1,5 +1,5 @@
 transformers
-fastapi
+fastapi[standard]
 pydantic
 typing_extensions
 onnxruntime
