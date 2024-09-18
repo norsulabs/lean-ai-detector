@@ -1,0 +1,8 @@
+transformers
+fastapi
+pydantic
+typing_extensions
+onnxruntime
+scipy
+huggingface_hub
+numpy

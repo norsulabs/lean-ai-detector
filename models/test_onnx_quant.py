@@ -8,7 +8,7 @@ data = load_dataset("imdb")
 tokenizer = AutoTokenizer.from_pretrained("norsu/lean-ai-text-detector")
 
 
-model_path = "lean-ai-text-detector-8bit.onnx"
+model_path = "deployment/app/lean-ai-text-detector-8bit.onnx"
 
 sess_options = onnxruntime.SessionOptions()
 session = onnxruntime.InferenceSession(model_path, sess_options)
@@ -22,6 +22,7 @@ ort_inputs = {
     "input_ids": inputs["input_ids"],
     "input_mask": inputs["attention_mask"],
 }
+print(ort_inputs)
 outputs = np.argmax(np.reshape(session.run(None, ort_inputs), (-1, 2)), 1)
 corr = 0
 for i in range(len(outputs)):
