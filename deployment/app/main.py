@@ -7,6 +7,21 @@ import onnxruntime
 from huggingface_hub import hf_hub_download
 from scipy.special import softmax
 
+import re
+
+
+def clean_text(text):
+    # Remove all symbols except for alphanumeric characters and spaces
+    text = re.sub(r"[^a-zA-Z0-9\s]", "", text)
+    # Replace multiple spaces with a single space
+    text = re.sub(r"\s+", " ", text)
+    # Strip leading and trailing spaces
+    text = text.strip()
+
+    return text
+
+
+
 
 # Initialize the sentiment analysis pipeline
 tokenizer = AutoTokenizer.from_pretrained(
@@ -48,7 +63,7 @@ class TextRequest(BaseModel):
 async def predict_sentiment(request: TextRequest):
     try:
         inputs = tokenizer(
-            request.text,
+            clean_text(request.text),
             padding=True,
             truncation=True,
         )
