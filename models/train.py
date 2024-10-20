@@ -159,16 +159,12 @@ if __name__ == "__main__":
     )
 
     wandb.init(
-        # set the wandb project where this run will be logged
         project="ai-text-detector",
-        # track hyperparameters and run metadata
         config=cfg,
-        id="345",
-        name="sd",
+        id="346",
+        name="all-linear",
     )
 
-    # Load the data
     data = load_data(args.input)
 
-    # Train the model
     model = train_model(data, cfg)

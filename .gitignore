@@ -167,3 +167,5 @@ AI_Human.csv
 *.zip
 
 *.onnx
+
+*.csv

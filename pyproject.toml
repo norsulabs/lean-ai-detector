@@ -26,6 +26,10 @@ mkdocstrings = {extras = ["python"], version = "^0.26.1"}
 mkdocs-material = "^9.5.34"
 ruff = "^0.6.5"
 mkdocs = {extras = ["python"], version = "^1.6.1"}
+pyyaml = "^6.0.2"
+ipykernel = "^6.29.5"
+nltk = "^3.9.1"
+minio = "^7.2.9"
 
 [build-system]
 requires = ["poetry-core"]
