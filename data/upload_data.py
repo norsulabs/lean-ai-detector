@@ -1,7 +1,6 @@
 from argparse import ArgumentParser
 
 from minio import Minio
-from minio import Minio
 from minio.error import S3Error
 
 

@@ -41,10 +41,10 @@ class Config:
 def load_data(input_path):
     # Load the data from the input path
     data = pd.read_csv(input_path)
-    data = data.astype({"generated": int})
+    data = data.astype({"labels": int})
     data = Dataset.from_pandas(data.sample(10000))
     data = data.map(clean)
-    data = data.class_encode_column("generated")
+    data = data.class_encode_column("labels")
     return data
 
 
@@ -65,7 +65,6 @@ def train_model(data, cfg):
 
     tokenized_data = tokenized_data.remove_columns(column_names=["__index_level_0__"])
 
-    tokenized_data = tokenized_data.rename_column("generated", "labels")
     tokenized_data = tokenized_data.remove_columns("text")
     data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
     tokenized_data = tokenized_data.train_test_split(test_size=0.3)
