@@ -41,10 +41,10 @@ class Config:
 def load_data(input_path):
     # Load the data from the input path
     data = pd.read_csv(input_path)
-    data = data.astype({"labels": int})
+    data = data.astype({"label": int})
     data = Dataset.from_pandas(data.sample(10000))
     data = data.map(clean)
-    data = data.class_encode_column("labels")
+    data = data.class_encode_column("label")
     return data
 
 

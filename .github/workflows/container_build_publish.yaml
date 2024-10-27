@@ -1,9 +1,7 @@
 name: AI-text-detector CI for GHCR
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build_and_publish:

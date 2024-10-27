@@ -11,25 +11,17 @@ import re
 
 
 def clean_text(text):
-    # Remove all symbols except for alphanumeric characters and spaces
     text = re.sub(r"[^a-zA-Z0-9\s]", "", text)
-    # Replace multiple spaces with a single space
     text = re.sub(r"\s+", " ", text)
-    # Strip leading and trailing spaces
     text = text.strip()
 
     return text
 
 
-
-
-# Initialize the sentiment analysis pipeline
 tokenizer = AutoTokenizer.from_pretrained(
     "norsu/lean-ai-text-detector",
 )
 
-
-# model_path = r"lean-ai-text-detector-8bit.onnx"
 
 sess_options = onnxruntime.SessionOptions()
 
@@ -44,19 +36,14 @@ session = onnxruntime.InferenceSession(
 )
 
 
-# Initialize FastAPI app
 app = FastAPI()
 
 
-# Define a request model to ensure valid input with Annotated
 class TextRequest(BaseModel):
     text: Annotated[
         str,
         StringConstraints(min_length=1, strip_whitespace=True),
     ]
-
-
-# Define a batch request model to handle multiple texts at once with Annotated
 
 
 @app.post("/predict/")
@@ -67,21 +54,16 @@ async def predict_sentiment(request: TextRequest):
             padding=True,
             truncation=True,
         )
-        print(inputs)
         ort_inputs = {
             "input_ids": [inputs["input_ids"]],
             "input_mask": [inputs["attention_mask"]],
         }
-        print(ort_inputs)
-        # Run inference on the model
         result = session.run(None, ort_inputs)
 
-        # Take the argmax to get the predicted label
         predicted_label = softmax(result[0])[0][0]
 
         return {"result": predicted_label.tolist()}
     except Exception as e:
-        # Handle unexpected errors
         raise HTTPException(
             status_code=500, detail=f"Error processing request: {str(e)}"
         )
