@@ -6,3 +6,4 @@ onnxruntime
 scipy
 huggingface_hub
 numpy
+ray[serve]

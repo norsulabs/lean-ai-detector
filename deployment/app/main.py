@@ -28,7 +28,7 @@ sess_options = onnxruntime.SessionOptions()
 
 model = hf_hub_download(
     repo_id="norsu/lean-ai-text-detector",
-    filename="lean-ai-text-detector-8bit.onnx",
+    filename="model_int8.onnx",
 )
 session = onnxruntime.InferenceSession(
     model,

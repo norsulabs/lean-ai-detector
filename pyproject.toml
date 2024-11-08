@@ -30,6 +30,7 @@ pyyaml = "^6.0.2"
 ipykernel = "^6.29.5"
 nltk = "^3.9.1"
 minio = "^7.2.9"
+ray = {extras = ["serve"], version = "^2.38.0"}
 
 [build-system]
 requires = ["poetry-core"]
