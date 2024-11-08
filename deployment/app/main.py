@@ -28,7 +28,7 @@ sess_options = onnxruntime.SessionOptions()
 
 model = hf_hub_download(
     repo_id="norsu/lean-ai-text-detector",
-    filename="model_int8.onnx",
+    filename="onnx/model_quantized.onnx",
 )
 session = onnxruntime.InferenceSession(
     model,
@@ -56,7 +56,7 @@ async def predict_sentiment(request: TextRequest):
         )
         ort_inputs = {
             "input_ids": [inputs["input_ids"]],
-            "input_mask": [inputs["attention_mask"]],
+            "attention_mask": [inputs["attention_mask"]],
         }
         result = session.run(None, ort_inputs)
 

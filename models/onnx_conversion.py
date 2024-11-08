@@ -25,11 +25,11 @@ with torch.inference_mode():
         opset_version=12,
         input_names=[
             "input_ids",
-            "input_mask",
+            "attention_mask",
         ],
         output_names=["output"],
         dynamic_axes={
             "input_ids": symbolic_names,
-            "input_mask": symbolic_names,
+            "attention_mask": symbolic_names,
         },
     )
